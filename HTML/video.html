@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<meta charset="UTF-8">
+	<title>视频播放</title>
+</head>
+<style type="text/css">
+	.dropbtn {
+    background-color:#008B8B;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* 容器 <div> - 需要定位下拉内容 */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-left:90%;
+}
+
+/* 下拉内容 (默认隐藏) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #EEE8AA;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* 下拉菜单的链接 */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* 鼠标移上去后修改下拉菜单链接颜色 */
+.dropdown-content a:hover {background-color: #008B8B}
+
+/* 在鼠标移上去后显示下拉菜单 */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* 当下拉内容显示后修改下拉按钮的背景颜色 */
+.dropdown:hover .dropbtn {
+    background-color: #B22222;
+}
+body{
+ background:url(图片/video.jpg) no-repeat left top;
+  background-size:100%;
+}
+p{
+	margin-top: 100px;
+	margin-left: 500px;
+}
+.vi{
+	margin-top: 0	px;
+	margin-left:450px;
+}
+
+</style>
+<body>
+	<div class="dropdown">
+  <button class="dropbtn">选择功能</button>
+  <div class="dropdown-content">
+  	<a href="index.html">返回主页</a>
+    <a href="audio.html">音频收听</a>
+    <a href="pic.html">图片查看</a>
+</div>
+</div>
+<p><font style="font-size: 44px; color: white; font-weight: bold">观看视频请选择文件进行观看</font></p>
+<div class="vi">
+	<input id="v_file" type="file" style="display:none;" onChange="play()"/>
+<button id="play" onClick="yincang()">选择视频</button>
+<video id="video_id" controls autoplay></video>
+</div>
+</body>
+<script type="text/javascript">
+	 function yincang(){
+	var v_file=document.getElementById('v_file');
+	v_file.click();
+ }
+ function play(){
+	 var file = document.getElementById('v_file').files[0];
+            var url = URL.createObjectURL(file);
+            console.log(url);
+            document.getElementById("video_id").src = url;
+	 
+	}
+</script>
+</html>
